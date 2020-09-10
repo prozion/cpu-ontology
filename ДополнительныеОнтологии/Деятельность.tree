@@ -1,0 +1,47 @@
+ontology a:Ontology dc/title:"Онтология объединений индивидуумов в организованные группы" translate-to:ttl
+	namespaces base-url:http://ontologies.denis-shirshov.ru/ДополнительныеОнтологии/
+		rdf ns:http://www.w3.org/1999/02/22-rdf-syntax-ns#
+		rdfs ns:http://www.w3.org/2000/01/rdf-schema#
+		owl ns:http://www.w3.org/2002/07/owl#
+		dc ns:http://purl.org/dc/terms/
+		кс ns:http://ontologies.denis-shirshov.ru/ПостсоветскийГород/КультурныйСлой#
+		пу ns:http://ontologies.denis-shirshov.ru/ПостсоветскийГород/ПрикладнаяУрбанистика#
+		_ ns:http://ontologies.denis-shirshov.ru/baelas#
+		_ ns:Активности#
+	classes +section-class:owl/Class +section-hierarchy-relation:rdfs/subClassOf
+		Деятельность		
+			ПроектнаяДеятельность
+				ИсследованиеОбьекта
+					ГородскоеИсследование обьект-исследования:`_ part-of:Экземпляр_ТМГ`
+						ГородскоеИсследованиеЦПУ
+			ФункциональнаяДеятельность
+		Сеть
+			ГоризонтальнаяСеть
+				НейроноподобнаяСеть
+		ЭкземплярТМГ a:owl/Class is-instance-of:ТМГ
+		ТеоретическаяМодель
+			ТМГ deabbr:"Трехслойная модель города"
+		Роль
+			Исследователь
+			Житель
+		Субьект_действия syn:Агент_действия
+			Эксперт
+				ЛокальныйЭксперт
+			ГеройОдиночка d:"разделяет этику героя-одиночки"
+			КомандаРазвитияТерритории d:"группа людей, которая сообща работает над улучшением элементов модели города как трёхслойной системы."
+		Этика d:"оценка конкретных и абстрактных городских сценариев по шкале плохо-хорошо"
+		ГородскойСценарий d:"пространственно-временной паттерн взаимодействия между людьми в городской среде"
+		ЧастнаяСобственность
+		; этика
+		_ rdf/subject:Исследователь rdf/predicate:исследует rdf/object:ЭкземплярТМГ этическое_значение:Хорошо
+		_ rdf/subject:Житель rdf/predicate:крадет rdf/object:ЧастнаяСобственность этическое_значение:Плохо
+	properties +section-class:rdf/Property +section-hierarchy-relation:rdfs/subPropertyOf
+		этическое_значение domain:rdf/Statement range:`(one-of "Хорошо" "Нейтрально" "Плохо")`
+		исследует
+		крадет
+	instances
+		СетьЦПУ a:НейроноподобнаяСеть
+
+
+
+; Пример: Этика_исследования rdf/subject:Исследователь rdf/predicate:исследует rdf/object:Экземпляр_ТМГ еtic-value:Хорошо

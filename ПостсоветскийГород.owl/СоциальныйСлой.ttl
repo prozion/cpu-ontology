@@ -1,0 +1,180 @@
+@prefix : <http://ontologies.denis-shirshov.ru/ПостсоветскийГород/СоциальныйСлой#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix б: <http://ontologies.denis-shirshov.ru/ПостсоветскийГород/ОбщиеОпределения#> .
+@prefix фс: <http://ontologies.denis-shirshov.ru/ПостсоветскийГород/ФизическийСлой#> .
+@prefix кс: <http://ontologies.denis-shirshov.ru/ПостсоветскийГород/КультурныйСлой#> .
+
+### Классы
+
+:СоциальнаяИдентичность
+  a owl:Class ;
+  б:часть фс:Идентичность .
+
+:СоциальныйКапитал
+  a owl:Class .
+
+:СубъектСоциальнойСферы a owl:Class .
+
+:ЛокальныйЭксперт
+  a owl:Class .
+
+# Власть
+
+:Администрация
+  a owl:Class ;
+  :заказчикДля :ЛокальныйЭксперт ;
+  :размещаетИнформацию :ГородскоеМедиа .
+
+:Департамент
+  a owl:Class ;
+  б:часть :Администрация .
+
+:ГородскоеМедиа
+  a owl:Class ;
+  :зависитОт :Администрация .
+
+:Лоббист
+  a owl:Class ;
+  :работаетВ :Администрация .
+
+# Бизнес
+
+:Бизнес
+  a owl:Class ;
+  :заказчикДля :ЛокальныйЭксперт ;
+  :размещаетРекламу :ГородскоеМедиа .
+
+:КрупныйБизнес
+  a owl:Class ;
+  rdfs:subClassOf :Бизнес .
+
+:СреднийБизнес
+  a owl:Class ;
+  rdfs:subClassOf :Бизнес ;
+  :порождает :КреативныйКласс ;
+  :сотрудничает :Лоббист .
+
+:МалыйБизнес
+  a owl:Class ;
+  rdfs:subClassOf :Бизнес .
+
+:КреативныйКласс
+  a owl:Class .
+
+:Университет
+  a owl:Class ;
+  rdfs:subClassOf :СреднийБизнес .
+
+# Городские сообщества
+
+:НеформальноеСообщество
+  a owl:Class .
+
+:ГородскоеСообщество
+  a owl:Class ;
+  rdfs:subClassOf :НеформальноеСообщество ;
+  skos:definition "Самоорганизованная группа людей вокруг социальной проблемы, субкультуры, творческой личности, общественного пространства или места" ;
+  кс:вноситВклад кс:КультурныйКод .
+
+:НеформальноеГородскоеСообщество owl:equivalentClass :ГородскоеСообщество .
+
+:ЛокальноеСообщество
+  a owl:Class ;
+  rdfs:subClassOf :НеформальноеСообщество .
+
+:СоседскоеСообщество
+  a owl:Class ;
+  rdfs:subClassOf :ЛокальноеСообщество .
+
+:ПрофессиональноеСообщество
+  a owl:Class ;
+  rdfs:subClassOf :НеформальноеСообщество .
+
+:Диаспора
+  a owl:Class ;
+  rdfs:subClassOf :НеформальноеСообщество .
+
+:ОбщественнаяОрганизация
+  a owl:Class ;
+  :купирует :СоциальнаяПроблема .
+
+:ОбщаяТема
+  a owl:Class ;
+  :порождает :НеформальноеСообщество .
+
+:СоциальнаяПроблема
+  a owl:Class ;
+  rdfs:subClassOf :ОбщаяТема .
+
+:Субкультура
+  a owl:Class ;
+  rdfs:subClassOf :ОбщаяТема .
+
+:ГородскоеПространство
+  a owl:Class ;
+  rdfs:subClassOf :ОбщаяТема .
+
+:ЖительГорода
+  a owl:Class .
+
+:ГородскойАктивист
+  a owl:Class ;
+  rdfs:subClassOf :ЖительГорода ;
+  :организует :ГородскоеСообщество .
+
+:Горожанин
+  a owl:Class ;
+  rdfs:subClassOf :ЖительГорода ;
+  :проявляет кс:ГлобальнаяКультура .
+
+:ГородскойПассажир
+  a owl:Class ;
+  rdfs:subClassOf :ЖительГорода .
+
+:СпящийГорожанин
+  a owl:Class ;
+  owl:equivalentClass :ГородскойПассажир .
+
+[]
+  a owl:AllDisjointClasses ;
+  owl:members (:Горожанин :ГородскойПассажир) .
+
+### Свойства
+
+:размещаетИнформацию a rdfs:Property .
+
+:размещаетРекламу
+  a rdfs:Property ;
+  rdfs:subPropertyOf :размещаетИнформацию .
+
+:порождает
+  a owl:AsymmetricProperty .
+
+# решение задач
+
+:решаетПроблемуС
+  a owl:ObjectProperty .
+
+:купирует
+  a owl:ObjectProperty ;
+  rdfs:subPropertyOf :решаетПроблемуС .
+
+# взаимодействия
+:взаимодействует
+  a owl:SymmetricProperty .
+
+:сотрудничает
+  a rdfs:Property ;
+  rdfs:subPropertyOf :взаимодействует .
+
+:заказчикДля
+  a owl:AsymmetricProperty ;
+  rdfs:subPropertyOf :взаимодействует .
+
+:организует
+  a owl:AsymmetricProperty ;
+  rdfs:subPropertyOf :взаимодействует .

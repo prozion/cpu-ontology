@@ -1,0 +1,19 @@
+ontology a:Ontology dc/title:"Онтология списоков, реестров и каталогов" translate-to:ttl
+	namespaces base-url:http://ontologies.denis-shirshov.ru/ДополнительныеОнтологии/
+		rdf ns:http://www.w3.org/1999/02/22-rdf-syntax-ns#
+		rdfs ns:http://www.w3.org/2000/01/rdf-schema#
+		owl ns:http://www.w3.org/2002/07/owl#
+		dc ns:http://purl.org/dc/terms/
+		skos ns:http://www.w3.org/2004/02/skos/core#
+		_ ns:http://ontologies.denis-shirshov.ru/baelas#
+		_ ns:Реестры#
+	classes +section-class:owl/Class +section-hierarchy-relation:rdfs/subClassOf
+		Список
+			Каталог syn:Реестр
+			Линейный_список
+				Словарь
+					Глоссарий def:"словарь узкоспециализированных терминов в какой-либо отрасли знаний с толкованием, иногда переводом на другой язык, комментариями и примерами"
+					Тезаурус def:"словарь, собрание сведений, корпус или свод, полномерно охватывающие понятия, определения и термины специальной области знаний или сферы деятельности"
+				Список_ключевых_слов
+			Иерархический_список
+				Таксономия def:"результат классификации и группировки сложных систем, представляемый обычно в виде иерархической структуры"

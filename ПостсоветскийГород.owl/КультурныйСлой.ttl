@@ -1,0 +1,119 @@
+@prefix : <http://ontologies.denis-shirshov.ru/ПостсоветскийГород/КультурныйСлой#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix б: <http://ontologies.denis-shirshov.ru/ПостсоветскийГород/ОбщиеОпределения#> .
+@prefix фс: <http://ontologies.denis-shirshov.ru/ПостсоветскийГород/ФизическийСлой#> .
+@prefix сс: <http://ontologies.denis-shirshov.ru/ПостсоветскийГород/СоциальныйСлой#> .
+
+#  Культурный код
+
+:КультурнаяЦепочка
+  a owl:Class .
+
+:КраеведческийМузей
+  a owl:Class .
+
+:КультурныйКод
+  a owl:Class ;
+  б:часть :КультурнаяЦепочка ;
+  :концентрируется :КраеведческийМузей .
+
+:Смысл
+  a owl:Class ;
+  rdfs:subClassOf :КультурныйКод .
+
+:Идея
+  a owl:Class ;
+  rdfs:subClassOf :КультурныйКод .
+
+:ГородскаяТеория
+  a owl:Class ;
+  rdfs:subClassOf :Идея .
+
+:Легенда
+  a owl:Class ;
+  rdfs:subClassOf :КультурныйКод .
+
+:Название
+  a owl:Class ;
+  rdfs:subClassOf :КультурныйКод .
+
+:Песня
+  a owl:Class ;
+  rdfs:subClassOf :КультурныйКод .
+
+:ГородскойСумасшедший
+  a owl:Class ;
+  rdfs:subClassOf сс:ЖительГорода ;
+  :вноситВклад :КультурныйКод .
+
+#  Культуры
+
+:Культура
+  a owl:Class .
+
+:ГлобальнаяКультура
+  a owl:Class ;
+  rdfs:subClassOf :Культура .
+
+:ЗаводскаяКультура
+  a owl:Class ;
+  rdfs:subClassOf :Культура .
+
+:КрестьянскаяКультура
+  a owl:Class ;
+  rdfs:subClassOf :Культура .
+
+:КолхознаяКультура
+  a owl:Class ;
+  rdfs:subClassOf :КрестьянскаяКультура, :ЗаводскаяКультура .
+
+:СоветскаяКультура
+  a owl:Class ;
+  rdfs:subClassOf :КрестьянскаяКультура, :ЗаводскаяКультура .
+
+:Архетип
+  a owl:Class .
+
+:Крестьянин
+  a owl:Class ;
+  rdfs:subClassOf :Архетип ;
+  :проявляет :КолхознаяКультура.
+
+:Слобожанин
+  a owl:Class ;
+  rdfs:subClassOf :Архетип ;
+  :проявляет :ЗаводскаяКультура.
+
+:Заводчанин
+  a owl:Class ;
+  owl:equivalentClass :Слобожанин .
+
+:Колхозник
+  a owl:Class ;
+  rdfs:subClassOf :Архетип ;
+  :проявляет :КолхознаяКультура.
+
+:ГеройОдиночка
+  a owl:Class ;
+  rdfs:subClassOf :Архетип ;
+  :проявляет :СоветскаяКультура.
+
+:ГородскойТролль
+  a owl:Class ;
+  rdfs:subClassOf :ГеройОдиночка .
+
+
+### Свойства
+
+:проявляет
+  a owl:ObjectProperty .
+
+:концентрируется
+  a owl:ObjectProperty .
+
+:вноситВклад
+  a owl:ObjectProperty .

@@ -1,0 +1,18 @@
+@prefix : <http://ontologies.denis-shirshov.ru/ПостсоветскийГород/Онтология#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix б: <http://ontologies.denis-shirshov.ru/ПостсоветскийГород/ОбщиеОпределения> .
+@prefix фс: <http://ontologies.denis-shirshov.ru/ПостсоветскийГород/ФизическийСлой#> .
+@prefix сс: <http://ontologies.denis-shirshov.ru/ПостсоветскийГород/СоциальныйСлой#> .
+@prefix кс: <http://ontologies.denis-shirshov.ru/ПостсоветскийГород/КультурныйСлой#> .
+
+<http://ontologies.denis-shirshov.ru/ПостсоветскийГород/Онтология>
+  rdf:type owl:Ontology ;
+  dc:title "Онтология постсоветского города" ;
+  owl:imports <http://ontologies.denis-shirshov.ru/ПостсоветскийГород/ОбщиеОпределения.ttl> ,
+              <http://ontologies.denis-shirshov.ru/ПостсоветскийГород/ФизическийСлой.ttl> ,
+              <http://ontologies.denis-shirshov.ru/ПостсоветскийГород/СоциальныйСлой.ttl> ,
+              <http://ontologies.denis-shirshov.ru/ПостсоветскийГород/КультурныйСлой.ttl> .

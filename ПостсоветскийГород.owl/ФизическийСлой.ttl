@@ -1,0 +1,54 @@
+@prefix : <http://ontologies.denis-shirshov.ru/ПостсоветскийГород/ФизическийСлой#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix urban: <?> . # нужна русскоязычная онтология, описывающая физические объекты в городе: дома, дороги, парковки и т.п.
+@prefix б: <http://ontologies.denis-shirshov.ru/ПостсоветскийГород/ОбщиеОпределения#> .
+@prefix сс: <http://ontologies.denis-shirshov.ru/ПостсоветскийГород/СоциальныйСлой#> .
+
+@base <http://ontologies.denis-shirshov.ru/ПостсоветскийГород/ФизическийСлой> .
+
+# @prefix xml: <http://www.w3.org/XML/1998/namespace> .
+# @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:ПространственнаяИдентичность
+  a owl:Class ;
+  :формализуетсяВ :ГрафФизическихОбъектов ;
+  б:часть :Идентичность .
+
+:Идентичность a owl:Class .
+
+:ГрафФизическихОбъектов a owl:Class .
+
+:ФизическийОбъект
+  a owl:Class ;
+  skos:definition "Объект, существовавший в прошлом, но сейчас уже не существующий. Остается в памяти людей и вместе с существующими физическими объектами образует граф физических объектов." ;
+  б:часть :ГрафФизическихОбъектов .
+
+:ФантомныйФизическийОбъект
+  a owl:Class ;
+  rdfs:subClassOf :ФизическийОбъект .
+
+urban:Здание
+  rdfs:subClassOf :ФизическийОбъект ;
+  б:часть :Инфраструктура .
+
+:Инфраструктура a owl:Class .
+
+:ТранспортнаяСеть
+  a owl:Class ;
+  б:часть :Инфраструктура .
+
+:ОбщественноеПространство
+  a owl:Class ;
+  б:часть :Инфраструктура .
+
+:Конфликт a owl:Class .
+:Город a owl:Class .
+:Ландшафт a owl:Class .
+:ГородскаяТопология a owl:Class .
+:ГородскиеЗапахи a owl:Class .
+:ОдеждаЖителей a owl:Class .
+:Кладбище a owl:Class .
