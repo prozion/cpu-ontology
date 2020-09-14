@@ -4,8 +4,8 @@ ontology dc/title:"Definitions for data (semantic web terms: instances, individu
 		rdfs ns:https://www.w3.org/2000/01/rdf-schema 
 		owl ns:https://www.w3.org/2002/07/owl 
 		dc ns:http://purl.org/dc/terms/ 
-		_ ns:http://ontologies.denis-shirshov.ru/baelas#
-		_ ns:http://ontologies.denis-shirshov.ru/baelas-data#
+		_ ns:http://ontologies.denis-shirshov.ru/bls#
+		_ ns:http://ontologies.denis-shirshov.ru/bls-data#
 	classes +section-class:owl/Class +section-hierarchy-relation:subclass-of
 		Person subclass-of:dc/Agent
 	properties +section-class:owl/DatatypeProperty +section-hierarchy-relation:subproperty-of
